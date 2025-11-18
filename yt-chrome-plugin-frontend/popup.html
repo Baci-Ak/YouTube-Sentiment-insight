@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>YouTube Comment Insights</title>
+  <meta charset="UTF-8" />
   <style>
     /* Dark Theme */
     body {
@@ -16,6 +17,7 @@
     h1 {
       font-size: 20px;
       color: #ffffff;
+      margin: 0 0 10px 0;
     }
     .section {
       margin-bottom: 15px;
@@ -29,6 +31,7 @@
     .comment-list {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
     .comment-item {
       margin: 8px 0;
@@ -75,6 +78,10 @@
 <body>
   <h1>YouTube Comment Insights</h1>
   <div id="output" class="section"></div>
+
+  <!-- Load environment-style config first (not committed: config.js is gitignored) -->
+  <script src="config.js"></script>
+  <!-- Then load main popup logic which reads window.APP_CONFIG.API_URL -->
   <script src="popup.js"></script>
 </body>
 </html>
