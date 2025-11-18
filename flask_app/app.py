@@ -15,6 +15,14 @@ from nltk.stem import WordNetLemmatizer
 from mlflow.tracking import MlflowClient
 import matplotlib.dates as mdates
 import pickle
+import os  
+
+# Resolve project root
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, "lgbm_model.pkl")
+VECTORIZER_PATH = os.path.join(BASE_DIR, "tfidf_vectorizer.pkl")
+
+
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
@@ -79,7 +87,7 @@ def load_model(model_path, vectorizer_path):
 
 
 # Initialize the model and vectorizer
-model, vectorizer = load_model("./lgbm_model.pkl", "./tfidf_vectorizer.pkl")  
+model, vectorizer = load_model(MODEL_PATH, VECTORIZER_PATH) 
 
 # Initialize the model and vectorizer
 # model, vectorizer = load_model_and_vectorizer("yt_chrome_plugin_model", "1", "./tfidf_vectorizer.pkl")  # Update paths and versions as needed
