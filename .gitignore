@@ -210,6 +210,6 @@ __marimo__/
 
 
 
-/lgbm_model.pkl
-/tfidf_vectorizer.pkl
-/experiment_info.json
+# /lgbm_model.pkl
+# /tfidf_vectorizer.pkl
+# /experiment_info.json
