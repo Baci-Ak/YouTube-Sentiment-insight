@@ -78,7 +78,7 @@ https://www.youtube.com/watch?v=i_FdiQMwKiw
 
 	
 ## 3. Create ECR repo to store/save docker image
-    - Save the URI: 315865595366.dkr.ecr.us-east-1.amazonaws.com/youtube
+    - Save the URI: 210459439517.dkr.ecr.us-east-1.amazonaws.com/mlproj
 
 	
 ## 4. Create EC2 machine (Ubuntu) 
@@ -116,4 +116,4 @@ https://www.youtube.com/watch?v=i_FdiQMwKiw
 
     AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
 
-    ECR_REPOSITORY_NAME = simple-app
+    ECR_REPOSITORY_NAME = mlproj
