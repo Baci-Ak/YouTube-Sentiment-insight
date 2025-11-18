@@ -1,9 +1,47 @@
-FROM python:3.11-slim-buster
+# ---- base image ----
+FROM python:3.11-slim
 
+# OS deps (libgomp1 is required by LightGBM) + curl for healthcheck
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends libgomp1 curl \
+ && rm -rf /var/lib/apt/lists/*
+
+# sane python defaults
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1
+
+# allow PORT override (default 8080)
+ARG PORT=8080
+ENV PORT=${PORT}
+
+# workdir
 WORKDIR /app
 
+# install python deps first for better caching
+COPY requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+# download nltk data needed (stopwords/wordnet)
+RUN python - <<'PY'\n\
+import nltk\n\
+nltk.download('stopwords')\n\
+nltk.download('wordnet')\n\
+nltk.download('omw-1.4')\n\
+PY
+
+# copy the rest of the project (includes model PKLs and flask_app/)
 COPY . /app
 
-RUN pip install -r requirements.txt
+# create non-root user
+RUN useradd -m -u 10001 appuser && chown -R appuser:appuser /app
+USER appuser
 
-CMD ["python3", "app.py"]
+# expose + healthcheck
+EXPOSE ${PORT}
+HEALTHCHECK --interval=30s --timeout=3s --start-period=15s --retries=3 \
+  CMD curl -fsS "http://localhost:${PORT}/" || exit 1
+
+# run with gunicorn, serving flask_app/app.py (module: app)
+# make sure requirements.txt includes: gunicorn
+CMD ["bash", "-lc", "gunicorn --chdir flask_app app:app --bind 0.0.0.0:${PORT} --workers 2 --threads 4 --timeout 60"]
