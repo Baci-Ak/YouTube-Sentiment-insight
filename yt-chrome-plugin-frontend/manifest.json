@@ -1,16 +1,24 @@
 {
   "manifest_version": 3,
   "name": "YouTube Sentiment Insights",
-  "version": "1.0",
-  "description": "Analyzes YouTube video comments for sentiment.",
+  "version": "1.0.1",
+  "description": "Analyze YouTube video comments for sentiment and insights directly from the video page.",
   "action": {
     "default_popup": "popup.html"
   },
   "permissions": [
     "tabs",
     "activeTab",
-    "scripting",
-    "http://localhost/*",
-    "https://www.googleapis.com/*"
-  ]
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.googleapis.com/*",
+    "https://yt-sentiment-config-baci.s3.amazonaws.com/*",
+    "http://54.242.62.191:8080/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
 }

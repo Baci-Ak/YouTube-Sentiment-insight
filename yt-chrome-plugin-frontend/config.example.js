@@ -3,5 +3,5 @@
 
 window.APP_CONFIG = {
   // Local dev backend
-  API_URL: 'http://localhost:5001',
+  API_URL: 'http://localhost:5000',
 };

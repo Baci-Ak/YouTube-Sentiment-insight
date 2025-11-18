@@ -209,6 +209,7 @@ __marimo__/
 
 
 yt-chrome-plugin-frontend/config.js
+yt-chrome-plugin-frontend/config.json
 
 
 # /lgbm_model.pkl

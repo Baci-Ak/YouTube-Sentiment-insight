@@ -114,6 +114,12 @@ https://www.youtube.com/watch?v=i_FdiQMwKiw
 
     AWS_REGION = us-east-1
 
-    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
+    AWS_ECR_LOGIN_URI = demo>>  210459439517.dkr.ecr.us-east-1.amazonaws.com
 
     ECR_REPOSITORY_NAME = mlproj
+
+
+deploy to chrome store
+
+ cd yt-chrome-plugin-frontend
+ run: zip -r ../yt-sentiment-extension-1.0.1.zip .
