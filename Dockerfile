@@ -23,12 +23,16 @@ COPY requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # download nltk data needed (stopwords/wordnet)
-RUN python - <<'PY'\n\
-import nltk\n\
-nltk.download('stopwords')\n\
-nltk.download('wordnet')\n\
-nltk.download('omw-1.4')\n\
+# download nltk data needed (stopwords/wordnet)
+RUN python - << 'PY'
+import nltk
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
 PY
+
+
+
 
 # copy the rest of the project (includes model PKLs and flask_app/)
 COPY . /app
