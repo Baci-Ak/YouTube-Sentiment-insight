@@ -16,12 +16,29 @@ from mlflow.tracking import MlflowClient
 import matplotlib.dates as mdates
 import pickle
 import os  
+import nltk 
+from nltk.data import find
 
 # Resolve project root
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODEL_PATH = os.path.join(BASE_DIR, "lgbm_model.pkl")
 VECTORIZER_PATH = os.path.join(BASE_DIR, "tfidf_vectorizer.pkl")
 
+def ensure_nltk_resources():
+    """Ensure required NLTK resources are available in the container."""
+    #from nltk.data import find
+
+    resources = [
+        ("corpora/stopwords", "stopwords"),
+        ("corpora/wordnet", "wordnet"),
+        ("corpora/omw-1.4", "omw-1.4"),
+    ]
+
+    for path, name in resources:
+        try:
+            find(path)
+        except LookupError:
+            nltk.download(name)
 
 
 app = Flask(__name__)
@@ -85,6 +102,8 @@ def load_model(model_path, vectorizer_path):
     except Exception as e:
         raise
 
+# Make sure NLTK data is available (stopwords, wordnet, etc.)
+ensure_nltk_resources()
 
 # Initialize the model and vectorizer
 model, vectorizer = load_model(MODEL_PATH, VECTORIZER_PATH) 
