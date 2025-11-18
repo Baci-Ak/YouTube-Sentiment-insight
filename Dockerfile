@@ -23,13 +23,9 @@ COPY requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # download nltk data needed (stopwords/wordnet)
-# download nltk data needed (stopwords/wordnet)
-RUN python - << 'PY'
-import nltk
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
-PY
+
+RUN python -c "import nltk; nltk.download('stopwords'); nltk.download('wordnet'); nltk.download('omw-1.4')"
+
 
 
 
