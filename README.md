@@ -1,5 +1,9 @@
 # 🎬 YouTube Sentiment Insight – End-to-End ML & Chrome Extension
 
+
+<img width="1280" height="800" alt="banner" src="https://github.com/user-attachments/assets/18880bf4-2478-4266-b978-9eeedee4ad15" />
+
+---
 This project is a **full production pipeline** that analyzes YouTube comments using machine learning, exposes predictions through a backend API, and visualizes insights in a **Chrome browser extension**.
 
 It includes:
