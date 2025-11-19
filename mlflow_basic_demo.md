@@ -190,7 +190,47 @@ https://www.youtube.com/watch?v=i_FdiQMwKiw
 	newgrp docker
 	
 # 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
+    setting>actions>runner>new self hosted runner> choose os> then run command one by one:
+
+    ## 6.1. example commands:
+
+    ### Download
+
+    1. create a folder:
+
+    ```bash
+    mkdir actions-runner && cd actions-runner
+    ```
+
+    2. ownload latest package:
+
+    ```bash
+    curl -o actions-runner-linux-x64-2.329.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.329.0/actions-runner-linux-x64-2.329.0.tar.gz
+    ```
+    3. optional, validate the hash:
+
+    ```bash
+    echo "194f1e1e4bd02f80b7e9633fc546084d8d4e19f3928a324d512ea53430102e1d  actions-runner-linux-x64-2.329.0.tar.gz" | shasum -a 256 -c
+    ```
+
+   4.  extract the installer:
+
+   ```bash
+    tar xzf ./actions-runner-linux-x64-2.329.0.tar.gz
+
+    ```
+
+    ### Configure
+    1. create the runner and start the configuration experience:
+    
+    ```bash 
+    ./config.sh --url https://github.com/Baci-Ak/YouTube-Sentiment-insight --token ae73RVG3NIKJE6H6BBABKY3JDQCMs
+    ```
+
+    2. last step, run it!
+    ```bash
+    ./run.sh
+    ```
 
 
 # 7. Setup github secrets:
