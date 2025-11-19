@@ -108,15 +108,7 @@ All processing is:
 ## 📦 7. Changes to This Policy
 
 This policy may be updated to reflect improvements or new regulatory requirements. Updates will be posted in this file.
-
----
-
-## 📬 8. Contact
-
-For questions or concerns, contact:
-
-**Baci Data Science Lab**  
-Email: baci.datascience@gmail.com  
+ 
 
 ---
 
