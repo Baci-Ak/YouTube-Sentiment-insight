@@ -1,14 +1,13 @@
 {
   "manifest_version": 3,
   "name": "YouTube Sentiment Insights",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Analyze YouTube video comments for sentiment and insights directly from the video page.",
   "action": {
     "default_popup": "popup.html"
   },
   "permissions": [
-    "tabs",
-    "activeTab"
+    "tabs"
   ],
   "host_permissions": [
     "https://www.googleapis.com/*",
